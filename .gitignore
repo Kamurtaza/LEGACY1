@@ -1,0 +1,17 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Firebase config (DO NOT PUSH PRIVATE KEYS)
+backend/config/firebaseConfig.json
+
+# Environment variables
+.env
+
+# VS Code settings
+.vscode/
+
+# Logs
+logs
+*.log
