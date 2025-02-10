@@ -2,6 +2,10 @@ const db = require("../config/firebase");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+console.log("✅ Checking Firestore connection in UserController...");
+console.log("✅ DB Object Type:", typeof db);
+console.log("✅ Firestore Function Available:", typeof db.collection);
+
 exports.registerUser = async (req, res) => {
     const { email, name, password } = req.body;
     try {
