@@ -15,6 +15,5 @@ const bucket = admin.storage().bucket(); // ✅ This now correctly points to you
 console.log("🔥 Firebase initialized successfully!");
 console.log("✅ Firestore Object Type:", typeof db);
 console.log("✅ Firestore Available Functions:", Object.keys(db));
-console.log("✅ Firebase Storage Bucket:", bucket.name);
 
 module.exports = { db, bucket };

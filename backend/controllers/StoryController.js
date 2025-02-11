@@ -1,32 +1,36 @@
-const db = require("../config/firebase");
+const { db } = require("../config/firebase");  // ✅ Ensure correct destructuring!
+
 
 // Create a new story
 exports.createStory = async (req, res) => {
     const { title, content, mediaUrl } = req.body;
     const userId = req.user.email; // Extract user from JWT token
 
-    try {
-        if (!title || !content) {
-            return res.status(400).json({ error: "Title and content are required." });
-        }
+    console.log("🔍 Checking Firestore before creating a story...");
+    console.log("✅ DB Object Type:", typeof db);
+    console.log("✅ Firestore Function Available:", typeof db.collection);
+    console.log("✅ Firestore Object Keys:", Object.keys(db));
 
-        const storyRef = db.collection("stories").doc();
+    try {
+        const storyRef = db.collection("stories").doc();  // 🔥 Fails here if db is incorrect!
         const newStory = {
             title,
             content,
-            mediaUrl: mediaUrl || "", // Optional media URL
+            mediaUrl,
             userId,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         };
-
         await storyRef.set(newStory);
 
         res.status(201).json({ message: "Story created successfully!", story: newStory });
     } catch (error) {
+        console.error("❌ Firestore Error:", error.message);
         res.status(500).json({ error: error.message });
     }
 };
+
+
 
 // Get all stories for a user
 exports.getUserStories = async (req, res) => {

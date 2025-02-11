@@ -1,4 +1,4 @@
-const db = require("../config/firebase");
+const { db } = require("../config/firebase"); // ✅ Ensure we correctly destructure 'db'
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
