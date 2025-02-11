@@ -91,7 +91,7 @@ exports.deleteAudio = async (req, res) => {
 
     try {
         // Fetch the audio file from Firestore
-        const audioRef = db.collection("audioUploads").doc(audioId);
+        const audioRef = db.collection("recordings").doc(audioId); // ✅ Fixed collection name
         const audioDoc = await audioRef.get();
 
         if (!audioDoc.exists) {
