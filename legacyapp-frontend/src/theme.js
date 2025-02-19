@@ -3,10 +3,13 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#4CAF50", // Change this to match your app’s brand
+      main: "#C89F77", // Gold
     },
     secondary: {
-      main: "#FF9800",
+      main: "#6A4E23", // Brown
+    },
+    background: {
+      default: "#FFFFFF", // White
     },
   },
   typography: {

@@ -1,34 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CssBaseline, AppBar, Toolbar, Typography, Container, Button } from "@mui/material";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AudioRecorder from "./components/AudioRecorder";
 
 function App() {
   return (
     <Router>
-      <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Legacy Creator App
-          </Typography>
-          <Button color="inherit" href="/">
-            Login
-          </Button>
-          <Button color="inherit" href="/register">
-            Register
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <Container sx={{ mt: 4 }}>
+      <div>
+        <h1>Legacy Creator App</h1>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/record" element={<AudioRecorder />} />
+          </Route>
         </Routes>
-      </Container>
+      </div>
     </Router>
   );
 }
